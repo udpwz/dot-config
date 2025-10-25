@@ -1,0 +1,10 @@
+---@class Snacks
+---@field picker table
+---@field explorer table
+---@field scratch table
+---@field notifier table
+---@field bufdelete function
+---@field rename table
+---@field gitbrowse function
+---@field terminal function
+---@field words table

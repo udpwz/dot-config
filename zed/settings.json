@@ -1,0 +1,174 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "git_panel": {
+    "button": false
+  },
+  "agent_buffer_font_size": 15.0,
+  "agent_ui_font_size": 19.0,
+  "ui_font_weight": 400.0,
+  "buffer_font_weight": 400.0,
+  "completions": {
+    "words_min_length": 4
+  },
+  "indent_guides": {
+    "coloring": "fixed",
+    "background_coloring": "disabled"
+  },
+  "allow_rewrap": "anywhere",
+  "soft_wrap": "prefer_line",
+  "show_wrap_guides": false,
+  "toolbar": {
+    "quick_actions": true,
+    "code_actions": false
+  },
+  "autoscroll_on_clicks": true,
+  "auto_signature_help": true,
+  "lsp_document_colors": "inlay",
+  "diagnostics": {
+    "inline": {
+      "min_column": 3,
+      "padding": 2,
+      "enabled": true
+    }
+  },
+  "close_on_file_delete": true,
+  "file_finder": {
+    "modal_max_width": "medium"
+  },
+  "bottom_dock_layout": "right_aligned",
+  "centered_layout": {
+    "left_padding": 0.19999998807907104
+  },
+  "title_bar": {
+    "show_branch_icon": false
+  },
+  "use_system_window_tabs": true,
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true
+  },
+  "tabs": {
+    "show_diagnostics": "all",
+    "file_icons": false,
+    "git_status": true
+  },
+  "tab_size": 2,
+  "env":{
+    
+  },
+  "agent": {
+    "dock": "right",
+    "model_parameters": []
+  },
+  "features": {
+    "edit_prediction_provider": "zed"
+  },
+  "file_types": {
+      "C++": ["mm", "m"]
+  },
+  "ui_font_features": {
+    "calt":true 
+  },
+  "buffer_font_features": {
+    "calt": false
+  },
+  "gutter": {
+     "line_numbers": false,
+     "min_line_number_digits": 1,
+     "folds": false
+  },
+  "icon_theme": "Catppuccin Macchiato",
+  "vim_mode": true,
+  "vim": {
+      "use_smartcase_find": true
+  },
+  "ui_font_size": 19.0,
+  "buffer_font_size": 17,
+  "autosave": {
+    "after_delay": {
+      "milliseconds": 1000
+    }
+  },
+  "tab_bar":{
+    // "show": false
+  },
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  },   
+  "inlay_hints": {
+    // Global switch to toggle hints on and off, switched off by default.
+    "show_background": true,
+    "enabled": true,
+    // Toggle certain types of hints on and off, all switched on by default.
+    "show_type_hints": true,
+    "show_parameter_hints": true,
+    // Corresponds to null/None LSP hint type value.
+    "show_other_hints": true,
+    // Time to wait after editing the buffer, before requesting the hints,
+    // set to 0 to disable debouncing.
+    "edit_debounce_ms": 700,
+    // Time to wait after scrolling the buffer, before requesting the hints,
+    // set to 0 to disable debouncing.
+    "scroll_debounce_ms": 50
+  },
+  "inline_code_actions": true,
+  "hover_popover_delay": 0, //Project Panel
+  "project_panel": {
+    "button": true,
+    "auto_fold_dirs": false,
+    "sticky_scroll": false
+  },
+  "scrollbar":{
+    "show":"never" 
+  },
+  "lsp": {
+      "deno": {
+        "settings": {
+          "deno": {
+            "enable": true
+          }
+        }
+      }
+    },
+    "languages": {
+      "Markdown-Inline": {
+         "show_wrap_guides": true,
+         "hard_tabs": true
+      },
+      "JavaScript": {
+        "language_servers": [
+          "deno",
+          "!typescript-language-server",
+          "!vtsls",
+          "!eslint"
+        ],
+        "formatter": "language_server"
+      },
+      "TypeScript": {
+        "language_servers": [
+          "deno",
+          "!typescript-language-server",
+          "!vtsls",
+          "!eslint"
+        ],
+        "formatter": "language_server"
+      },
+      "TSX": {
+        "language_servers": [
+          "deno",
+          "!typescript-language-server",
+          "!vtsls",
+          "!eslint"
+        ],
+        "formatter": "language_server"
+      }
+    }
+}
