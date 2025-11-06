@@ -29,6 +29,9 @@ return {
     },
     config = function(_, opts)
       local options = vim.tbl_deep_extend("force", {
+        options = {
+          theme = 'auto',
+        },
         sections = {
           lualine_a = { { 'mode', fmt = short_status } },
           lualine_b = {
@@ -42,7 +45,10 @@ return {
             }
           },
           lualine_c = {
-            'filename',
+            {
+              'filename',
+              path = 3,  -- 0 = just filename, 1 = relative path, 2 = absolute path, 3 = absolute path with tilde (~) for home directory
+            },
           },
           lualine_x = { 'encoding', 'fileformat' },
           lualine_y = { 'progress' },

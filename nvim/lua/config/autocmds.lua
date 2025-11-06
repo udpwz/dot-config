@@ -1,3 +1,6 @@
+-- Autocmds and User Commands Configuration
+
+-- LSP Attach: Setup keymaps and document highlighting
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
   callback = function(event)
@@ -50,21 +53,64 @@ vim.api.nvim_create_autocmd("LspAttach", {
         end,
       })
     end
+
   end,
 
 })
 
-vim.api.nvim_create_user_command('LS', function()
-  require('snacks').picker.buffers()
-end, { desc = 'Open buffer picker' })
+-- Netrw: Preserve buffer and customize appearance
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "netrw",
+  callback = function()
+    vim.opt_local.bufhidden = "hide"
+    vim.opt_local.buflisted = false
+    vim.opt_local.relativenumber = false
+    vim.opt_local.signcolumn = "no"
+    vim.opt_local.colorcolumn = ""
+    vim.opt_local.statuscolumn = ""
+  end,
+  desc = "Netrw: preserve buffer",
+})
 
-vim.cmd('cnoreabbrev ls LS')
+-- Highlight yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  callback = function()
+    vim.highlight.on_yank { higroup = "IncSearch", timeout = 50 }
+  end,
+})
+
+-- Auto-resize windows when vim is resized
+vim.api.nvim_create_autocmd("VimResized", {
+  callback = function()
+    vim.cmd("tabdo windo wincmd =")
+  end,
+  desc = "Auto-resize tabs and windows when the screen is resized",
+})
+
+-- Format on insert leave
+vim.api.nvim_create_autocmd("InsertLeave", {
+  pattern = "*",
+  callback = function()
+    local bufnr = vim.api.nvim_get_current_buf()
+    local ft = vim.bo[bufnr].filetype
+
+    -- Skip formatting for git commits and if no LSP clients attached
+    if ft == "gitcommit" or ft == "gitrebase" then
+      return
+    end
+
+    local clients = vim.lsp.get_clients({ bufnr = bufnr })
+    if #clients > 0 then
+      vim.lsp.buf.format({ async = true })
+    end
+  end,
+})
 
 -- Auto-reload files when changed externally
 vim.opt.autoread = true
 
 vim.api.nvim_create_autocmd(
-{ 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
+  { 'FocusGained', 'BufEnter', 'CursorHold', 'CursorHoldI' }, {
   group = vim.api.nvim_create_augroup('auto-reload', { clear = true }),
   callback = function()
     if vim.fn.mode() ~= 'c' then
@@ -81,3 +127,46 @@ vim.api.nvim_create_autocmd('FileChangedShellPost', {
     vim.notify('File changed on disk. Buffer reloaded.', vim.log.levels.WARN)
   end,
 })
+
+-- Quickfix: Toggle with mouse click
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "qf",
+  callback = function()
+    vim.keymap.set("n", "<LeftMouse>", function()
+      local mouse_pos = vim.fn.getmousepos()
+      local line = mouse_pos.line
+      local current_line = vim.fn.line(".")
+
+      -- If clicking on the same line, toggle quickfix
+      if line == current_line then
+        vim.cmd("cclose")
+      else
+        -- Otherwise, position cursor and open the entry
+        vim.fn.setpos(".", {0, line, mouse_pos.column, 0})
+        vim.cmd("normal! \r")
+      end
+    end, { buffer = true, desc = "Toggle quickfix or jump to entry" })
+  end,
+  desc = "Quickfix: mouse click to toggle or jump",
+})
+
+-- User Commands
+
+-- Toggle LSP inlay hints
+vim.api.nvim_create_user_command('InlayHint', function()
+  local bufnr = 0
+  local enabled = vim.lsp.inlay_hint.is_enabled { bufnr = bufnr }
+  vim.lsp.inlay_hint.enable(not enabled, { bufnr = bufnr })
+end, { desc = "Toggle LSP inlay hints" })
+
+-- Buffer picker (override ls command)
+vim.api.nvim_create_user_command('LS', function()
+  require('snacks').picker.buffers()
+end, { desc = 'Open buffer picker' })
+
+vim.cmd('cnoreabbrev ls LS')
+
+-- Dashboard
+vim.api.nvim_create_user_command("Dashboard", function()
+  Snacks.dashboard()
+end, {})
