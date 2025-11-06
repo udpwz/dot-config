@@ -5,7 +5,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 -- Clear search highlight
-vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>", { desc = "Clear search highlight" })
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<cr>",
+  { desc = "Clear search highlight" })
 
 -- Escape terminal mode
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>", { noremap = true, silent = true })
@@ -44,7 +45,17 @@ vim.keymap.set("n", "<leader>e", function()
 end, { desc = "Reveal current file in netrw" })
 
 -- Command Palette (Cmd+P on Mac, Ctrl+P on other platforms)
-local modifier = vim.fn.has('mac') == 1 and '<D-p>' or '<C-p>'
+local modifier = '<C-p>'
 vim.keymap.set('n', modifier, function()
   Snacks.picker.commands()
 end, { desc = "Command Palette" })
+
+-- Format entire buffer with Ctrl+Shift+I
+vim.keymap.set('n', '<C-S-i>', function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format buffer" })
+
+-- Format visual selection with Ctrl+Shift+I
+vim.keymap.set('v', '<C-S-i>', function()
+  vim.lsp.buf.format({ async = true })
+end, { desc = "Format selection" })

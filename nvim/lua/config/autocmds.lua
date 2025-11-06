@@ -87,24 +87,24 @@ vim.api.nvim_create_autocmd("VimResized", {
   desc = "Auto-resize tabs and windows when the screen is resized",
 })
 
--- Format on insert leave
-vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = "*",
-  callback = function()
-    local bufnr = vim.api.nvim_get_current_buf()
-    local ft = vim.bo[bufnr].filetype
-
-    -- Skip formatting for git commits and if no LSP clients attached
-    if ft == "gitcommit" or ft == "gitrebase" then
-      return
-    end
-
-    local clients = vim.lsp.get_clients({ bufnr = bufnr })
-    if #clients > 0 then
-      vim.lsp.buf.format({ async = true })
-    end
-  end,
-})
+-- Format on insert leave (disabled - use manual keymaps instead)
+-- vim.api.nvim_create_autocmd("InsertLeave", {
+--   pattern = "*",
+--   callback = function()
+--     local bufnr = vim.api.nvim_get_current_buf()
+--     local ft = vim.bo[bufnr].filetype
+--
+--     -- Skip formatting for git commits and if no LSP clients attached
+--     if ft == "gitcommit" or ft == "gitrebase" then
+--       return
+--     end
+--
+--     local clients = vim.lsp.get_clients({ bufnr = bufnr })
+--     if #clients > 0 then
+--       vim.lsp.buf.format({ async = true })
+--     end
+--   end,
+-- })
 
 -- Auto-reload files when changed externally
 vim.opt.autoread = true
