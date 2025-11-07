@@ -59,7 +59,7 @@ return {
           min_width = 30,
           force_max_height = false,
           keys = {
-            shuttle = nil,
+            shuttle = '<C-w>',
             toggle_or_open = '<CR>',
             vsplit = 'v',
             split = 's',
@@ -90,8 +90,8 @@ return {
           left_width = 0.3,
           keys = {
             toggle_or_jump = '<CR>',
-            quit = 'q',
-            jump = 'i',
+            quit = {'q', '<ESC>'},
+            jump = 'e',
           },
         },
         rename = {

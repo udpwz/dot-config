@@ -32,11 +32,11 @@ return {
       { "<leader><space>", function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
       { "<leader>/",       function() Snacks.picker.grep() end,                  desc = "Grep" },
       -- LSP
-      { "<leader>ss",      function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
-      { "<leader>sS",      function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
+      { "<leader>st",      function() Snacks.picker.lsp_symbols() end,           desc = "LSP Symbols" },
+      { "<leader>sT",      function() Snacks.picker.lsp_workspace_symbols() end, desc = "LSP Workspace Symbols" },
       -- Other
       { "<leader>.",       function() Snacks.scratch() end,                      desc = "Toggle Scratch Buffer" },
-      { "<leader>S",       function() Snacks.scratch.select() end,               desc = "Select Scratch Buffer" },
+      { "<leader>sc",       function() Snacks.scratch.select() end,               desc = "Select Scratch Buffer" },
       { "<c-`>",           function() Snacks.terminal() end,                     desc = "Toggle Terminal",       mode = { "n", "v", "t" } },
       { "]]",              function() Snacks.words.jump(vim.v.count1) end,       desc = "Next Reference",        mode = { "n", "t" } },
       { "[[",              function() Snacks.words.jump(-vim.v.count1) end,      desc = "Prev Reference",        mode = { "n", "t" } },
