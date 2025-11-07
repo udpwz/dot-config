@@ -23,6 +23,9 @@ vim.opt.signcolumn = "yes"   -- Always show sign column (prevents text shifting)
 vim.opt.wrap = false         -- Don't wrap lines
 vim.opt.updatetime = 500     -- Faster CursorHold trigger (for hover & highlights)
 
+-- Cursor settings
+vim.opt.guicursor = "n-v-c:block-blinkwait0-blinkoff200-blinkon200,i-ci-ve:ver25-blinkwait0-blinkoff200-blinkon200,r-cr-o:hor20-blinkwait0-blinkoff200-blinkon200"
+
 -- File handling
 vim.opt.autoread = true -- Auto-reload files when changed externally
 
@@ -33,10 +36,11 @@ vim.g.netrw_use_errorwindow = 1
 
 -- Diagnostics
 vim.diagnostic.config({
-  virtual_text = {
-    prefix = "■", -- ■ or any character you like
-    spacing = 1, -- how many spaces between code and message
-  },
+  virtual_text = false,
+  -- virtual_text = {
+  --   prefix = "■", -- ■ or any character you like
+  --   spacing = 1, -- how many spaces between code and message
+  -- },
   signs = true, -- show gutter signs
   underline = true, -- underline the problematic code
 })
@@ -44,5 +48,11 @@ vim.diagnostic.config({
 -- Highlight colors
 vim.api.nvim_set_hl(0, "IblIndent", {
   fg = "#3B4252",
+  bold = true
+})
+
+-- Cursor line highlight with increased contrast
+vim.api.nvim_set_hl(0, "CursorLine", {
+  bg = "#2E3440",
   bold = true
 })

@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
     map("gs", vim.lsp.buf.signature_help, "Signature Documentation")
     map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
-    map("<leader>rrn", vim.lsp.buf.rename, "Rename all references")
+    -- map("<leader>rrn", vim.lsp.buf.rename, "Rename all references")
 
     local function client_supports_method(client, method, bufnr)
       if vim.fn.has 'nvim-0.11' == 1 then

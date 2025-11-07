@@ -23,20 +23,25 @@ return {
           show_file = true,
           folder_level = 2,
         },
+        callhierarchy = {
+          keys = {
+            edit = '<cr>',
+            vsplit = 'v',
+            split = 's',
+            tabe = 't',
+            shuttle = '<C-w>',
+            toggle_or_req = 'u',
+            quit = { 'q', 'ESC' },
+          }
+        },
         code_action = {
           num_shortcut = true,
           show_server_name = true,
           extend_gitsigns = true,
           keys = {
             quit = 'q',
-            exec = '<CR>',
+            exec = '<cr>',
           },
-        },
-        hover = {
-          max_width = 0.6,
-          max_height = 0.8,
-          open_link = 'gx',
-          open_cmd = '!open',
         },
         diagnostic = {
           show_code_action = true,
@@ -48,9 +53,9 @@ return {
           border_follow = true,
           extend_relatedInformation = false,
           keys = {
-            exec_action = 'o',
+            exec_action = 'e',
             quit = 'q',
-            expand_or_jump = '<CR>',
+            expand_or_jump = '<cr>',
             quit_in_show = { 'q', '<ESC>' },
           },
         },
@@ -60,7 +65,7 @@ return {
           force_max_height = false,
           keys = {
             shuttle = '<C-w>',
-            toggle_or_open = '<CR>',
+            toggle_or_open = '<cr>',
             vsplit = 'v',
             split = 's',
             tabnew = 't',
@@ -89,7 +94,7 @@ return {
           max_height = 0.5,
           left_width = 0.3,
           keys = {
-            toggle_or_jump = '<CR>',
+            toggle_or_jump = '<cr>',
             quit = {'q', '<ESC>'},
             jump = 'e',
           },
@@ -99,7 +104,7 @@ return {
           auto_save = false,
           keys = {
             quit = 'q',
-            exec = '<CR>',
+            exec = '<cr>',
             select = '<ESC>',
           },
         },
@@ -113,7 +118,7 @@ return {
       local keymap = vim.keymap.set
 
       -- Lsp finder - Find the symbol's definition
-      keymap('n', 'gh', '<cmd>Lspsaga finder<CR>')
+      keymap('n', 'gh', '<cmd>Lspsaga finder tyd+ref+imp+def<CR>')
 
       -- Code action
       keymap({ 'n', 'v' }, '<leader>ca', '<cmd>Lspsaga code_action<CR>')
