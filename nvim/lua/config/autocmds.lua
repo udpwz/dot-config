@@ -13,7 +13,6 @@ vim.api.nvim_create_autocmd("LspAttach", {
     -- https://neovim.io/doc/user/news-0.11.html#_defaults
 
     map("gl", vim.diagnostic.open_float, "Open Diagnostic Float")
-    map("K", vim.lsp.buf.hover, "Hover Documentation")
     map("gs", vim.lsp.buf.signature_help, "Signature Documentation")
     map("<leader>ca", vim.lsp.buf.code_action, "Code Action")
     map("<leader>rrn", vim.lsp.buf.rename, "Rename all references")
