@@ -29,7 +29,7 @@ return {
             vsplit = 'v',
             split = 's',
             tabe = 't',
-            shuttle = '<C-w>',
+            shuttle = ']',
             toggle_or_req = 'u',
             quit = { 'q', 'ESC' },
           }
@@ -39,7 +39,7 @@ return {
           show_server_name = true,
           extend_gitsigns = true,
           keys = {
-            quit = 'q',
+            quit = { 'q', 'ESC' },
             exec = '<cr>',
           },
         },
@@ -51,7 +51,7 @@ return {
           max_height = 0.6,
           text_hl_follow = false,
           border_follow = true,
-          extend_relatedInformation = false,
+          extend_relatedInformation = true,
           keys = {
             exec_action = 'e',
             quit = 'q',
@@ -64,7 +64,7 @@ return {
           min_width = 30,
           force_max_height = false,
           keys = {
-            shuttle = '<C-w>',
+            shuttle = ']',
             toggle_or_open = '<cr>',
             vsplit = 'v',
             split = 's',
